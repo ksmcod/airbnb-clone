@@ -14,7 +14,7 @@ interface ModalProps {
   actionLabel: string;
   disabled?: boolean;
   secondaryAction?: () => void;
-  secondaryLabel?: string;
+  SecondaryActionLabel?: string;
 }
 
 export default function Modal({
@@ -27,7 +27,7 @@ export default function Modal({
   actionLabel,
   disabled,
   secondaryAction,
-  secondaryLabel,
+  SecondaryActionLabel,
 }: ModalProps) {
   const [showModal, setShowModal] = useState<boolean>(isOpen);
 
@@ -94,7 +94,19 @@ export default function Modal({
               {/* FOOTER */}
               <div className="flex flex-col gap-2 p-3">
                 <div className="flex items-center gap-2 w-full">
-                  <Button label="Button" />
+                  {secondaryAction && SecondaryActionLabel && (
+                    <Button
+                      outline
+                      label={SecondaryActionLabel}
+                      onClick={handleSecondaryAction}
+                      disabled={disabled}
+                    />
+                  )}
+                  <Button
+                    label={actionLabel}
+                    onClick={handleSubmit}
+                    disabled={disabled}
+                  />
                 </div>
               </div>
             </div>

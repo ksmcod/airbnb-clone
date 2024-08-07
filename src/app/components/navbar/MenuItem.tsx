@@ -1,11 +1,11 @@
 "use client";
 
-interface Props {
+interface MenuItemProps {
   onclick: () => void;
   label: string;
 }
 
-export default function MenuItem({ label, onclick }: Props) {
+export default function MenuItem({ label, onclick }: MenuItemProps) {
   return (
     <div
       onClick={onclick}

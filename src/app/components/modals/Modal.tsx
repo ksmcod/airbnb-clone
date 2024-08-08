@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
-import Button from "../components/Button";
+import Button from "../Button";
 
 interface ModalProps {
   isOpen: boolean;
@@ -65,7 +65,7 @@ export default function Modal({
   return (
     <>
       <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none bg-neutral-800/70">
-        <div className="relative w-full md:w-4/6 lg:w-3/6 xl:w-2/5 my-4 mx-auto h-full md:h-auto lg:h-auto">
+        <div className="relative w-full md:w-3/6 lg:w-3/6 xl:w-2/5 my-4 mx-auto h-full md:h-auto lg:h-auto">
           {/* CONTENT */}
 
           <div
@@ -76,7 +76,7 @@ export default function Modal({
                  : "translate-y-full opacity-0"
              }`}
           >
-            <div className="translate h-full md:h-auto lg:h-auto border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+            <div className="translate h-full md:h-auto lg:h-auto border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none px-6">
               {/* HEADER */}
               <div className="flex justify-center items-center p-4 rounded-t border-b relative">
                 <button
@@ -108,6 +108,7 @@ export default function Modal({
                     disabled={disabled}
                   />
                 </div>
+                {footer}
               </div>
             </div>
           </div>

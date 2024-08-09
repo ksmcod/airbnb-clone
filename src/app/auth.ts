@@ -59,6 +59,11 @@ const authOptions: AuthOptions = {
     strategy: "jwt",
   },
   secret: process.env.NEXTAUTH_SECRET,
+  cookies: {
+    sessionToken: { name: "user_token", options: {} },
+    csrfToken: { name: "csrf-token", options: {} },
+    callbackUrl: { name: "cllbck-url", options: {} },
+  },
 };
 
 export default authOptions;

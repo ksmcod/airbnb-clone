@@ -89,7 +89,7 @@ export default function RegisterModal() {
         outline
         label="Continue with Google"
         icon={FcGoogle}
-        onClick={() => {}}
+        onClick={() => signIn("google")}
       />
 
       <div className="text-neutral-500 mt-2 font-light">

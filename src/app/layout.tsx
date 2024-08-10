@@ -4,7 +4,7 @@ import "./globals.css";
 import localFont from "next/font/local";
 import Navbar from "./components/navbar/Navbar";
 import RegisterModal from "./components/modals/RegisterModal";
-import { Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import LoginModal from "./components/modals/LoginModal";
 import getCurrentUser from "./actions/getCurrentUser";
 import Client from "./components/Client";
@@ -41,7 +41,7 @@ export default async function RootLayout({
         <RegisterModal />
         <LoginModal />
         <Toaster />
-        <Navbar />
+        <Navbar tryUser={currentUser} />
         {children}
       </body>
     </html>

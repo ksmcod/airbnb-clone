@@ -5,8 +5,13 @@ import Container from "../Container";
 import Logo from "./Logo";
 import Search from "./Search";
 import Usermenu from "./Usermenu";
+import { User } from "@prisma/client";
+import { useSession } from "next-auth/react";
 
-export default function Navbar() {
+interface NavbarProps {
+  tryUser: User | null;
+}
+export default function Navbar({ tryUser }: NavbarProps) {
   const user = useUser().user;
 
   console.log("In Navbar, user is: ", user);
@@ -17,7 +22,7 @@ export default function Navbar() {
           <div className="flex flex-row items-center justify-between gap-3 md:gap-0">
             <Logo />
             <Search />
-            <Usermenu />
+            <Usermenu tryUser={tryUser} />
           </div>
         </Container>
       </div>

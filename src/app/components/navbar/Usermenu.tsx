@@ -6,8 +6,14 @@ import { useCallback, useState } from "react";
 import MenuItem from "./MenuItem";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
+import useUser from "@/app/hooks/useUser";
+import { signOut } from "next-auth/react";
+import { User } from "@prisma/client";
 
-export default function Usermenu() {
+interface UsermenuProps {
+  tryUser: User | null;
+}
+export default function Usermenu({ tryUser }: UsermenuProps) {
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
 
@@ -16,6 +22,8 @@ export default function Usermenu() {
   const toggleOpen = useCallback(() => {
     setIsOpen((value) => !value);
   }, []);
+
+  const user = useUser().user;
 
   return (
     <div className="relative">
@@ -32,17 +40,28 @@ export default function Usermenu() {
         >
           <AiOutlineMenu />
           <div className="hidden md:block">
-            <Avatar />
+            <Avatar src={user?.image} />
           </div>
         </div>
       </div>
       {isOpen && (
         <div className="absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm">
           <div className="flex flex-col cursor-pointer">
-            <>
-              <MenuItem onclick={loginModal.onOpen} label="Login" />
-              <MenuItem onclick={registerModal.onOpen} label="Signup" />
-            </>
+            {user ? (
+              <>
+                <MenuItem onclick={() => {}} label="My trips" />
+                <MenuItem onclick={() => {}} label="My favorites" />
+                <MenuItem onclick={() => {}} label="My reservations" />
+                <MenuItem onclick={() => {}} label="Airbnb my home" />
+                <hr />
+                <MenuItem onclick={() => signOut()} label="Logout" />
+              </>
+            ) : (
+              <>
+                <MenuItem onclick={loginModal.onOpen} label="Login" />
+                <MenuItem onclick={registerModal.onOpen} label="Signup" />
+              </>
+            )}
           </div>
         </div>
       )}

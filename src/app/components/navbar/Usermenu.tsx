@@ -11,9 +11,9 @@ import { signOut } from "next-auth/react";
 import { User } from "@prisma/client";
 
 interface UsermenuProps {
-  tryUser: User | null;
+  user: User | null;
 }
-export default function Usermenu({ tryUser }: UsermenuProps) {
+export default function Usermenu({ user }: UsermenuProps) {
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
 
@@ -23,7 +23,7 @@ export default function Usermenu({ tryUser }: UsermenuProps) {
     setIsOpen((value) => !value);
   }, []);
 
-  const user = useUser().user;
+  // const user = useUser().user;
 
   return (
     <div className="relative">

@@ -10,6 +10,7 @@ import { FieldValues, useForm } from "react-hook-form";
 import CountrySelect from "../inputs/CountrySelect";
 import dynamic from "next/dynamic";
 import Counter from "../inputs/Counter";
+import ImageUpload from "../inputs/ImageUpload";
 
 export default function RentModal() {
   const rentModal = useRentModal();
@@ -51,6 +52,7 @@ export default function RentModal() {
   const guestCount = watch("guestCount");
   const roomCount = watch("roomCount");
   const bathroomCount = watch("bathroomCount");
+  const imgSrc = watch("imgSrc");
 
   const Map = useMemo(
     () =>
@@ -163,6 +165,22 @@ export default function RentModal() {
           onChange={(value) => setCustomValue("bathroomCount", value)}
         />
         <hr />
+      </div>
+    );
+  }
+
+  if (step === STEPS.IMAGES) {
+    bodyContent = (
+      <div className=" flex flex-col gap-4">
+        <Heading
+          title="Add a photo of your place"
+          subtitle="Show guests what your property looks like"
+        />
+
+        <ImageUpload
+          value={imgSrc}
+          onChange={(value) => setCustomValue("imgSrc", value)}
+        />
       </div>
     );
   }

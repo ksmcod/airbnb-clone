@@ -1,6 +1,5 @@
 "use client";
 
-import useUser from "@/app/hooks/useUser";
 import Container from "../Container";
 import Logo from "./Logo";
 import Search from "./Search";
@@ -13,7 +12,6 @@ interface NavbarProps {
   user: User | null;
 }
 export default function Navbar({ user }: NavbarProps) {
-  console.log("In Navbar, user is: ", user);
   return (
     <div className="w-full fixed bg-white z-10 shadow-sm">
       <div className="py-2 border-b-2">

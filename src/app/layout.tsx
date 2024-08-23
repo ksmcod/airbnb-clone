@@ -32,7 +32,7 @@ export default async function RootLayout({
 }>) {
   const currentUser = await getCurrentUser();
 
-  console.log("Current user in layout.tsx is: ", currentUser);
+  // console.log("Current user in layout.tsx is: ", currentUser);
 
   return (
     <html lang="en">

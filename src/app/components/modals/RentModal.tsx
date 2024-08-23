@@ -101,6 +101,7 @@ export default function RentModal() {
         rentModal.onClose();
       })
       .catch((error: any) => {
+        console.log("The error obj is: ", error);
         toast.error(error?.response?.data || "An error occured!");
       })
       .finally(() => {

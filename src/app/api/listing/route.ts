@@ -37,7 +37,7 @@ export async function POST(request: Request) {
     !price
   ) {
     return NextResponse.json("Please fill all required fields!", {
-      status: 500,
+      status: 400,
       statusText: "Fill all required fields!",
     });
   }

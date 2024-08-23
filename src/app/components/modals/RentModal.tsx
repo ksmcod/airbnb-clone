@@ -59,7 +59,7 @@ export default function RentModal() {
   const guestCount = watch("guestCount");
   const roomCount = watch("roomCount");
   const bathroomCount = watch("bathroomCount");
-  const imgSrc = watch("imgSrc");
+  const imageSrc = watch("imageSrc");
 
   const Map = useMemo(
     () =>
@@ -100,8 +100,8 @@ export default function RentModal() {
         setStep(STEPS.CATEGORY);
         rentModal.onClose();
       })
-      .catch(() => {
-        toast.error("An error occured!");
+      .catch((error: any) => {
+        toast.error(error?.response?.data || "An error occured!");
       })
       .finally(() => {
         setIsLoading(false);
@@ -208,8 +208,8 @@ export default function RentModal() {
         />
 
         <ImageUpload
-          value={imgSrc}
-          onChange={(value) => setCustomValue("imgSrc", value)}
+          value={imageSrc}
+          onChange={(value) => setCustomValue("imageSrc", value)}
         />
       </div>
     );

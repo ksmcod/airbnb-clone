@@ -4,7 +4,6 @@ import getCurrentUser from "@/app/actions/getCurrentUser";
 import getListingById from "@/app/actions/getListingById";
 import EmptyState from "@/app/components/EmptyState";
 import ListingClient from "./ListingClient";
-import { User } from "@prisma/client";
 
 interface IParams {
   listingId?: string;

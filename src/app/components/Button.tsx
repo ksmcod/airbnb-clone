@@ -30,9 +30,7 @@ export default function Button({
             : "bg-rose-500 hover:bg-rose-500/95 border-rose-500 text-white"
         }
         ${
-          small
-            ? "py-1 text-sm font-light border"
-            : "py-2 text-md font-semibold border-2"
+          small ? "py-1 text-sm  border" : "py-2 text-md font-semibold border-2"
         }
         `}
     >

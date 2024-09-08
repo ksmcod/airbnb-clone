@@ -8,11 +8,12 @@ import useCountries from "@/app/hooks/useCountries";
 import { Listing, Reservation, User } from "@prisma/client";
 import Image from "next/image";
 import HeartButton from "../HeartButton";
+import Button from "../Button";
 
 interface ListingCardProps {
   data: Listing;
   reservation?: Reservation;
-  onAction: (id: string) => void;
+  onAction?: (id: string) => void;
   disabled?: boolean;
   actionLabel?: string;
   actionId?: string;
@@ -67,7 +68,7 @@ export default function ListingCard({
       onClick={() => router.push(`/listings/${data.id}`)}
       className="col-span-1 cursor-pointer group"
     >
-      <div className="flex flex-col gap-2 w-full">
+      <div className="flex flex-col gap-1 px-2 w-full">
         <div className="aspect-square w-full relative overflow-hidden rounded-xl">
           <Image
             fill
@@ -79,12 +80,24 @@ export default function ListingCard({
             <HeartButton listingId={data.id} currentUser={currentUser} />
           </div>
         </div>
-        <div className="font-semibold text-lg">
+        <div className="font-semibold text-md">
           {location?.region}, {location?.label}
         </div>
-        <div className="font-light text-neutral-500">
+        <div className="font-light text-neutral-500 text-sm">
           {reservationDate || data.category}
         </div>
+        <div className="flex items-center gap-1">
+          <div className="font-semibold">$ {price}</div>
+          {!reservation && <div className="font-light">night</div>}
+        </div>
+        {onAction && actionLabel && (
+          <Button
+            disabled={disabled}
+            label={actionLabel}
+            onClick={handleCancel}
+            small
+          />
+        )}
       </div>
     </div>
   );

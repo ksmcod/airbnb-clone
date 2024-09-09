@@ -9,7 +9,7 @@ export default function Logo() {
   const handleClick = useCallback(() => {
     router.push("/");
     router.refresh();
-  }, []);
+  }, [router]);
 
   return (
     <Image

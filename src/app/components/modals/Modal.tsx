@@ -42,7 +42,7 @@ export default function Modal({
     setTimeout(() => {
       onClose();
     }, 300);
-  }, []);
+  }, [disabled, onClose]);
 
   const handleSubmit = useCallback(() => {
     if (disabled) return;

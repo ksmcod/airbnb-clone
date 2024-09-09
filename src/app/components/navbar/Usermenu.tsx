@@ -62,7 +62,10 @@ export default function Usermenu({ user }: UsermenuProps) {
                   onclick={() => router.push("/trips")}
                   label="My trips"
                 />
-                <MenuItem onclick={() => {}} label="My favorites" />
+                <MenuItem
+                  onclick={() => router.push("/favorites")}
+                  label="My favorites"
+                />
                 <MenuItem
                   onclick={() => router.push("/reservations")}
                   label="My reservations"

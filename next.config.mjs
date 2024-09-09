@@ -21,12 +21,6 @@ const nextConfig = {
       },
     ],
   },
-  exportPathMap: async function (defaultPathMap) {
-    return {
-      ...defaultPathMap,
-      "/api/auth/[...nextauth]": { page: "/api/auth/[...nextauth]" },
-    };
-  },
 };
 
 export default nextConfig;

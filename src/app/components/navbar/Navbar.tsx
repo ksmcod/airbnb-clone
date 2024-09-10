@@ -7,6 +7,8 @@ import Usermenu from "./Usermenu";
 import { User } from "@prisma/client";
 import { useSession } from "next-auth/react";
 import Categories from "./Categories";
+import { Suspense } from "react";
+import Loading from "@/app/loading";
 
 interface NavbarProps {
   user: User | null;
@@ -14,16 +16,18 @@ interface NavbarProps {
 export default function Navbar({ user }: NavbarProps) {
   return (
     <div className="w-full fixed bg-white z-10 shadow-sm">
-      <div className="py-2 border-b-2">
-        <Container>
-          <div className="flex flex-row items-center justify-between gap-3 md:gap-0">
-            <Logo />
-            <Search />
-            <Usermenu user={user} />
-          </div>
-        </Container>
-      </div>
-      <Categories />
+      <Suspense fallback={<Loading />}>
+        <div className="py-2 border-b-2">
+          <Container>
+            <div className="flex flex-row items-center justify-between gap-3 md:gap-0">
+              <Logo />
+              <Search />
+              <Usermenu user={user} />
+            </div>
+          </Container>
+        </div>
+        <Categories />
+      </Suspense>
     </div>
   );
 }

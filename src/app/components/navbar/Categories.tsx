@@ -18,6 +18,8 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { FaSkiing } from "react-icons/fa";
 import { BsSnow } from "react-icons/bs";
 import { IoDiamond } from "react-icons/io5";
+import { Suspense } from "react";
+import Loading from "@/app/loading";
 
 export const categories = [
   {
@@ -108,16 +110,18 @@ export default function Categories() {
 
   return (
     <Container>
-      <div className="pt-2 flex justify-between items-center overflow-x-auto">
-        {categories.map((category) => (
-          <CategoryBox
-            key={category.label}
-            label={category.label}
-            selected={category.label === selectedCategory}
-            icon={category.icon}
-          />
-        ))}
-      </div>
+      <Suspense fallback={<Loading />}>
+        <div className="pt-2 flex justify-between items-center overflow-x-auto">
+          {categories.map((category) => (
+            <CategoryBox
+              key={category.label}
+              label={category.label}
+              selected={category.label === selectedCategory}
+              icon={category.icon}
+            />
+          ))}
+        </div>
+      </Suspense>
     </Container>
   );
 }
